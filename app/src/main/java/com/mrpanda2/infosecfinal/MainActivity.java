@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button searchButton;
     Button generateButton;
     Button checkButton;
+    Button vaultButton;
     ImageView img1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         searchButton =  findViewById(R.id.queryButton);
         generateButton =  findViewById(R.id.generateButton);
         checkButton =  findViewById(R.id.checkButton);
+        vaultButton = findViewById(R.id.vaultButton);
         img1 = findViewById(R.id.img1);
         searchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
@@ -43,6 +45,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+       vaultButton.setOnClickListener(new View.OnClickListener() {
+           public void onClick(View v) {
+               Intent intent = new Intent(MainActivity.this, MyVaultActivity.class);
+               startActivity(intent);
+           }
+       });
 
 
     }
