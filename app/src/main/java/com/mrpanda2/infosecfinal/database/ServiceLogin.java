@@ -14,6 +14,8 @@ public class ServiceLogin {
 
     public ServiceLogin(String serv) {
         service = serv;
+        username= "";
+        date = Calendar.getInstance().getTime();
     }
 
     public ServiceLogin(String serv, String user) {
