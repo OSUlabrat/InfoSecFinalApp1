@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import java.util.Random;
 import static java.lang.Character.isDigit;
+import static java.lang.Character.isLetter;
 import static java.lang.Character.isLowerCase;
 import static java.lang.Character.isUpperCase;
 import static java.lang.Character.toUpperCase;
@@ -19,9 +20,9 @@ public class passGenActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pass_gen);
-        original = (EditText) findViewById(R.id.originalPass);
-        strongerPassword = (EditText) findViewById(R.id.strongPass);
-        Button generateButton = (Button) findViewById(R.id.generateButton);
+        original =  findViewById(R.id.originalPass);
+        strongerPassword =  findViewById(R.id.strongPass);
+        Button generateButton =  findViewById(R.id.generateButton);
         generateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 String original = getOriginal();
@@ -49,24 +50,28 @@ public class passGenActivity extends AppCompatActivity implements View.OnClickLi
 
     //Gets the value from the edittext from user
     public String getOriginal(){
-        String newString = original.getText().toString();
-        return newString;
+        return original.getText().toString();
     }
     public String getStronger(String password, int[] counts){
         String newString = "";
         int countU = counts[0];
-        int countL = counts[1];
+
         int countN = counts[2];
         StringBuilder str = new StringBuilder();
         str.append(password);
         Random rand = new Random();
-        while (countU < 3 || countL < 3){
+        while (countU < 3 || countN < 3) {
             if (countU < 3){
-                int i = rand.nextInt(password.length());
-                if(isLowerCase(str.charAt(i))){
-                    toUpperCase(str.charAt(i));
+            for (int i = 0; i < str.length(); i++) {
+                if(isLowerCase(str.charAt(i)) && isLetter(str.charAt(i))){
+                    str.deleteCharAt(i);
+                    str.insert(i, toUpperCase(str.charAt(i)));
                     countU++;
                 }
+                if (countU > 2){
+                    break;
+                }
+            }
             }
             if (countN < 3){
                 int chance = rand.nextInt(10);
@@ -148,9 +153,9 @@ public class passGenActivity extends AppCompatActivity implements View.OnClickLi
         str.append(password);
         str.insert(rand.nextInt(password.length()), begin);
         str.insert(rand.nextInt(password.length()), end);
-        String newString = str.toString();
 
-        return newString;
+
+        return str.toString();
 
     }
 }
