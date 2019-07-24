@@ -72,7 +72,9 @@ public class MyVaultActivity extends AppCompatActivity {
     //Add credential pair to db
     public void addCredentials(View view) {
         clearText(text);
-        if(myService.addService(makeService(view)) > 0) {
+        ServiceLogin s = makeService(view);
+        s.setDate(Calendar.getInstance().getTime().toString());
+        if(myService.addService(s) > 0) {
             text.append("Service added!");
         } else {
             text.append("Service already has user. Did you mean update?");
@@ -82,11 +84,11 @@ public class MyVaultActivity extends AppCompatActivity {
     //If a service already has username, update it with new username and current date.
     public void updateService(View view) {
         ServiceLogin serv = makeService(view);
-        serv.setDate(Calendar.getInstance().getTime());
+        serv.setDate(Calendar.getInstance().getTime().toString());
         clearText(text);
         if(myService.updateService(serv) > 0)
         {
-            text.append("Services updated");
+            text.append("Service updated");
         } else{
             text.append("No service found");
         }
