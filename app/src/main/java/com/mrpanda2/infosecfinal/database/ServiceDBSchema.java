@@ -1,5 +1,7 @@
 package com.mrpanda2.infosecfinal.database;
 
+import java.util.Date;
+
 public class ServiceDBSchema {
     public final static class ServiceTable{
         public static final String NAME = "serviceLogins";

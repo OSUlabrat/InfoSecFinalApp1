@@ -6,7 +6,7 @@ import java.util.Date;
 public class ServiceLogin {
     private String username;
     private String service;
-    private Date date;
+    private String date;
 
     public ServiceLogin() {
 
@@ -15,14 +15,14 @@ public class ServiceLogin {
     public ServiceLogin(String serv) {
         service = serv;
         username= "";
-        date = Calendar.getInstance().getTime();
     }
 
     public ServiceLogin(String serv, String user) {
         username = user;
         service = serv;
-        date = Calendar.getInstance().getTime();
     }
+
+
 
     public String getUsername() {
         return username;
@@ -40,11 +40,11 @@ public class ServiceLogin {
         service = serv;
     }
 
-    public void setDate (Date d){
+    public void setDate (String d){
         date = d;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 }

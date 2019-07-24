@@ -11,9 +11,11 @@ public class ServiceCursorWrapper extends CursorWrapper {
     public ServiceLogin getServiceLogin() {
         String serviceString = getString(getColumnIndex(ServiceDBSchema.Columns.SERVICE));
         String username = getString(getColumnIndex(ServiceDBSchema.Columns.USERNAME));
+        String date = getString(getColumnIndex(ServiceDBSchema.Columns.DATE));
 
         ServiceLogin service = new ServiceLogin(serviceString);
         service.setUsername(username);
+        service.setDate(date);
 
         return service;
     }

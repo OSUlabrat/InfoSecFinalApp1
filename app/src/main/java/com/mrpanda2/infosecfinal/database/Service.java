@@ -26,6 +26,7 @@ public class Service {
         ContentValues values = new ContentValues();
         values.put(ServiceDBSchema.Columns.SERVICE, serviceLogin.getService());
         values.put(ServiceDBSchema.Columns.USERNAME, serviceLogin.getUsername());
+        values.put(ServiceDBSchema.Columns.DATE, serviceLogin.getDate());
 
         return values;
     }

@@ -18,7 +18,7 @@ public class ServiceBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + ServiceTable.NAME + " (" + ServiceDBSchema.Columns.SERVICE + " primary key, " + ServiceDBSchema.Columns.USERNAME + ")");
+        db.execSQL("create table " + ServiceTable.NAME + " (" + ServiceDBSchema.Columns.SERVICE + " primary key, " + ServiceDBSchema.Columns.USERNAME + ", " + ServiceDBSchema.Columns.DATE + ")");
     }
 
     @Override
